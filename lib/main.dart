@@ -11,17 +11,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Material Design',
-      home: Scaffold(
-        appBar: AppBar(
-        title: Text('Material Design Layout'),
-      ),
-      body: Center(
-        child: Text('Hello World'),
-      ),
-      ),
-    );
+  title: 'Column & Row',
+  home: Container(
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Container( color: Colors.blue, width: 100, height:100 ),
+        Container( color: Colors.red, width: 100, height:100 ),
+      ],
+    ),
+  ),
+);
   }
 }
-
-
