@@ -7,20 +7,33 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    var grid = ["pic0", "pic1", "pic2", "pic3", "pic4", "pic5",];
     return MaterialApp(
-  title: 'Column & Row',
-  home: Container(
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Container( color: Colors.blue, width: 100, height:100 ),
-        Container( color: Colors.red, width: 100, height:100 ),
-      ],
-    ),
-  ),
-);
+        home: Scaffold(
+            appBar: AppBar(
+              title: Text('GridView'),
+            ),
+            body: GridView.builder(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                ),
+                itemBuilder: (BuildContext context, int index) {
+                  if (index >= grid.length) {
+                    grid.addAll(["pic0", "pic1", "pic2", "pic3", "pic4", "pic5",]);
+                  }
+                  return _photoItem(grid[index]);
+                }
+            )
+        )
+    );
+  }
+
+  Widget _photoItem(String image) {
+    var assetsImage = "assets/img/" + image + ".png";
+    return Container(
+      child: Image.asset(assetsImage, fit: BoxFit.cover,),
+    );
   }
 }
